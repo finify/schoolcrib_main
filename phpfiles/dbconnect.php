@@ -2,6 +2,6 @@
 	$dbhost = 'localhost'; 
 	$dbuser = 'root'; 
 	$dbpass = ''; 
-	$db ='skulcrib_db';
+	$db ='schoolcrib';
 	$con=mysqli_connect($dbhost,$dbuser,$dbpass,$db) ;
 ?>

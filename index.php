@@ -63,6 +63,7 @@
 		<a href="login" id="button1">Login</a>
 		<a href="#" id="button2">Register</a>
 	</div>
+	<!-- SEARCH SECTION-->
 	<div class="search">
 		<p1>SEARCH LODGE</p1>
 		<div id="search_con">
@@ -130,7 +131,6 @@
 					<center><span class="ti-view-list-alt"></span></center>
 					<center><b>Get best Listing</b></center>
 					<center><b1>Get a wide range of accomodation selection all over nigerian university</b1></center>
-			
 				</div>
 			</div>
 			<div id="whyus_section">
@@ -140,7 +140,6 @@
 					<center><b1>We are always online on our mobile to answer any question you might have </b1></center>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 	
