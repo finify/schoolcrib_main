@@ -1,26 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION["student_email"])){
-header("Location: ../home");
-exit(); }
-if(isset($_SESSION["agent_email"])){
-header("Location: ../admin");
-exit(); }
-?>
-
-
-<html>
-	<body>
-		<div class="wrapper">
-			<center>
-			<a href="../">
-			<img src="../images/logo.png" width="120px" height="50px" title="wisewealth logo"/> <br>
-			</a>
-			</center>
-<?php
 require('../phpfiles/dbconnect.php');//DBCONNECTION
 
-// If form submitted, insert values into the database.
 if (isset($_POST['email']))
 {
     // removes backslashes
@@ -30,15 +11,13 @@ if (isset($_POST['email']))
 	$password = stripslashes($_REQUEST['password']);
 	$password = mysqli_real_escape_string($con,$password);
 	//Checking is user existing in the database or not
-	$query = "SELECT * FROM `student_profile` WHERE email='$email' 
-	and password='".md5($password)."'";	
-	$query1 = "SELECT * FROM `agent_profile` WHERE username='$email' 
-	and password='$password'";
+	$query = "SELECT * FROM `sc_users` WHERE Email='$email' and Usertype='student' and Password='".md5($password)."'";	
+	$query1 = "SELECT * FROM `sc_users` WHERE Email='$email' and Usertype='agent' and password='".md5($password)."'";
 	
 	FUNCTION error(){
 	echo '<form class="login" METHOD="POST"  >
     <p class="title">Log in</p>
-    <p class="title">Wrong user and password combination</p>
+    <p class="title" style="color:red;">Wrong user and password combination</p>
     Email
 	<input type="text" placeholder="email" name="email" required/>
 	
@@ -54,62 +33,50 @@ if (isset($_POST['email']))
     <input type="submit" id="button" value="Login"/>
 	</form>
 	<footer><a target="blank" href="#">A FINIFY PRODUCTION</a></footer>
-	</p>';
+	</div>
+	</body>
+	</html>';
 	}
 	
 	$result = mysqli_query($con,$query) ;
 	$result1 = mysqli_query($con,$query1);
 	$rows = mysqli_num_rows($result) ;
 	$rows1 = mysqli_num_rows($result1) ;
-         
 	if($rows==1)
 	{
-	$_SESSION['email'] = $email;
-    // Redirect user to index.php
-	header("Location:../home");
+		$_SESSION['studentemail'] = $email;
+		// Redirect user to index.php
+		header("Location:../studenthome");
+	}else if($rows1==1){
+		$_SESSION['agentemail'] = $email;
+		// Redirect user to index.php
+		header("Location:../agenthome");
+	}else{
+		require('header.php');
+		error();
 	}
-	else if($rows1==1)
-	{
-	$_SESSION['adminemail'] = $email;
-    // Redirect user to index.php
-	eader("Location:../admin");
-	}
-	else
-	{
-	error();
-	}
-}
-else
-{
-?>
+}else{
 
-<form class="login" METHOD="POST"  >
-    <p class="title">Log in</p>
-    Email
-	<input type="text" placeholder="email" name="email" required/>
-	
-	password
-	<input type="password" placeholder="*********" name="password"/>
-	<center>
-	<a href="#">Forgot Password</a>
-	<br>
-	Not yet a skulcrib member
-	<br><a href="../signup">Signup</a>
-	<br>
-	</center>
-    <input type="submit" id="button" value="Login"/>
- </form>
- 
- 
-  </p>
+	require('header.php');
+?>
+	<form class="login" METHOD="POST">
+		<p class="title">Log in</p>
+		Email
+		<input type="text" placeholder="email" name="email" required/>
+		
+		password
+		<input type="password" placeholder="*********" name="password"/>
+		<center>
+		<a href="#">Forgot Password</a>
+		<br>
+		Not yet a skulcrib member
+		<br><a href="../signup">Signup</a>
+		<br>
+		</center>
+		<input type="submit" id="button" value="Login"/>
+	</form>
+	<footer><a target="blank" href="#">A FINIFY PRODUCTION</a></footer>
 </div>
-
-	<?php } 
-require('header.php');	
-?>
-    
-    
-  </body>
+</body>
 </html>
-
-
+<?php } ?>

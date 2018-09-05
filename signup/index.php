@@ -47,7 +47,8 @@ $form = '
 
   require('../phpfiles/dbconnect.php');
   // If form submitted, insert values into the database.
-if (isset($_REQUEST['email'])){
+if (isset($_REQUEST['email']))
+{
   //cleaning input for db upload
 	$email = stripslashes($_REQUEST['email']);
 	$email = mysqli_real_escape_string($con,$email);
@@ -65,45 +66,44 @@ if (isset($_REQUEST['email'])){
 	$confirmpassword = mysqli_real_escape_string($con,$confirmpassword);
   $trn_date = date("Y-m-d H:i:s");
   
-if($confirmpassword==$password)
-{
-	$query = "SELECT * FROM `Sc_users` WHERE email='$email' 
-	and phoneno='$phoneno'" ;//query to select input with same details as in db
-	$result = mysqli_query($con,$query);
-	$rows = mysqli_num_rows($result);
-      if($rows==1)//if user already exist
-      {
-				$error = 'User already registered try another password';
-				require('signupheader.php');
-		    echo $form;
-      }else{
-			  //insert into userprofile//
-        $query1 = "INSERT  into `sc_users` 
-        (firstname,email,password,phoneno,institution,usertype)
-        VALUES 
-        ('$firstname','$email','".md5($password)."','$phoneno','$institution','$usertype')";
-        $result1 = mysqli_query($con,$query1);
-        if($result1)
-        {
+	if($confirmpassword==$password)
+	{
+		$query = "SELECT * FROM `Sc_users` WHERE email='$email' 
+		and phoneno='$phoneno'" ;//query to select input with same details as in db
+		$result = mysqli_query($con,$query);
+		$rows = mysqli_num_rows($result);
+				if($rows==1)//if user already exist
+				{
+					$error = 'User already registered try another password';
 					require('signupheader.php');
-          echo "<div class='form'>
-					You are registered successfully <a href='../login'>Login</a></div>
-					</div>  
-					</body>
-					</html>";
-          die();
-        }
-		  }
-}else{
-	require('signupheader.php');
-	echo "<div class='form'>
-	<b>Password Do not match</b> <a href='index.php'>Try Again</a></div>
-	</div>  
-	</body>
-	</html>";
-	die();
-}
-
+					echo $form;
+				}else{
+					//insert into userprofile//
+					$query1 = "INSERT  into `sc_users` 
+					(firstname,email,password,phoneno,institution,usertype)
+					VALUES 
+					('$firstname','$email','".md5($password)."','$phoneno','$institution','$usertype')";
+					$result1 = mysqli_query($con,$query1);
+					if($result1)
+					{
+						require('signupheader.php');
+						echo "<div class='form'>
+						You are registered successfully <a href='../login'>Login</a></div>
+						</div>  
+						</body>
+						</html>";
+						die();
+					}
+				}
+	}else{
+		require('signupheader.php');
+		echo "<div class='form'>
+		<b>Password Do not match</b> <a href='index.php'>Try Again</a></div>
+		</div>  
+		</body>
+		</html>";
+		die();
+	}
 }else{
 	require('signupheader.php');
 	echo $form;

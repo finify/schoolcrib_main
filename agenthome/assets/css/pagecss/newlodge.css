@@ -11,3 +11,19 @@
     font-size:20px;
     color:#3f073d;
 }
+#image_choose{
+    border-radius:50px;
+	color:white;
+	text-decoration:none;
+	background-color:#462245;
+	padding:10px 20px 10px 20px;
+	font-weight:bold;
+	transition: all 0.5s ease-out;
+	margin-bottom:10px; 	
+}
+#image_choose:HOVER{
+	font-weight:bold;
+	background-color:rgba(66, 49, 49, 0);
+	border:2px solid #462245;
+	color:#462245;
+}

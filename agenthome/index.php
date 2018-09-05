@@ -1,4 +1,17 @@
-<!doctype html>
+<?php
+require('function.php');
+session_start();
+$useremail = $_SESSION['agentemail'];
+
+$select_user = new select_allcon;
+$select_user->get_row_user($useremail,'Firstname');
+$user_firstname = $select_user->user_row;
+
+
+
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -53,7 +66,7 @@
                 <img src="../images/logo.png" width="130px" height="50px;" id="headerimg"/>
                 </a>
                 <div id="student_name">
-                <h5> Ifeanyi Izuegbu </h5>
+                <h5> <?php echo $user_firstname;?> </h5>
                 </div>
             </div>
 
@@ -147,7 +160,7 @@
                 <div class="row">
                      <div class="col-lg-12 col-sm-12">
                         <div id="student_intro">
-                        <b>Hi ifeanyi(Welcome to your dashboard)<b>
+                        <b>Hi <?php echo $user_firstname;?>(Welcome to your dashboard)<b>
                         </div>
                      </div>
                 </div>
@@ -609,9 +622,6 @@
 
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
     <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 	<script src="assets/js/paper-dashboard.js"></script>

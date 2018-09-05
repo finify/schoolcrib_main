@@ -1,3 +1,4 @@
+<html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
@@ -138,3 +139,10 @@ footer a, footer a:link {
 #header {font-size:25px; color:white;}
 </style>
 </head>
+<body>
+  <div class="wrapper">
+    <center>
+      <a href="../">
+      <img src="../images/logo.png" width="120px" height="50px" title="schoolcrib"/> <br>
+      </a>
+    </center>

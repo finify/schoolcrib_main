@@ -61,7 +61,7 @@
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.php">
+                    <a href="index.php">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
@@ -152,18 +152,18 @@
                                 <h4 class="title">Lodge Detail</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form METHOD="POST">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label> Lodge name</label>
-                                                <input type="text" class="form-control border-input"d placeholder="Lodge name" >
+                                                <input type="text" name="lodgename" class="form-control border-input" required placeholder="Lodge name" >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Amount</label>
-                                                <input type="number" class="form-control border-input"placeholder="Amount" >
+                                                <input type="number" required name="amount" class="form-control border-input"placeholder="Amount" >
                                             </div>
                                         </div>
                                         
@@ -172,10 +172,10 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label> Room Type</label>
-                                                <select class="form-control border-input">
-                                                <option value="A" disabled selected ></option>
-                                                <option value="A">Selfcon</option>
-                                                <option value="B">Single</option>
+                                                <select required class="form-control border-input">
+                                                <option value="" disabled selected ></option>
+                                                <option value="selfcon">Selfcon</option>
+                                                <option value="single">Single</option>
                                                
                                                 </select>
                                             </div>
@@ -183,11 +183,11 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Proximity</label>
-                                                <select class="form-control border-input">
-                                                <option value="A" disabled selected ></option>
-                                                <option value="A">very close</option>
-                                                <option value="B">close</option>
-                                                <option value="B">far</option>
+                                                <select class="form-control border-input" required>
+                                                <option value="" disabled selected ></option>
+                                                <option value="veryclose">very close</option>
+                                                <option value="close">close</option>
+                                                <option value="far">far</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -197,9 +197,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Discription</label>
-                                                <textarea rows="3" class="form-control border-input" placeholder="Here can be your description" value="Mike">
-
-                                                </textarea>
+                                                <textarea rows="3" class="form-control border-input" placeholder="Here can be your description" value="Mike"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -242,8 +240,7 @@
                                             </div>
                                         </div>   
                                     </div>
-                                    <input type="submit" class="btn btn-primary btn-fill"value="Upload Lodge">
-                                </form>
+                                
                             </div><!--content end -->  
                         </div><!--card end -->  
                     </div><!--column right  end -->
@@ -252,7 +249,51 @@
                             <div class="header">
                                 <h4 class="title">Add Images</h4>
                             </div>
-
+                            <div class="component">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <center><label> Featured image*(This is the first image users see)</label>
+                                            <input type="file" value="choose_image" accept="image/*" id="image_choose"/></center>
+                                        </div>
+                                    </div>  
+                                </div> 
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <center><label> Other images</label>
+                                            <input type="file" accept="image/*" value="choose_image" id="image_choose"/></center>
+                                        </div>
+                                    </div>  
+                                </div>  
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <center>
+                                            <input type="file" accept="image/*" value="choose_image" id="image_choose"/></center>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <center>
+                                            <input type="file" accept="image/*"value="choose_image" id="image_choose"/></center>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <center>
+                                            <input type="file" accept="image/*" value="choose_image" id="image_choose"/></center>
+                                        </div>
+                                    </div>  
+                                </div>  
+                                <center>
+                                <input type="submit" class="btn btn-info btn-fill btn-wd" value="Add New Lodge"/></center>
+                                </form>
+                            </div>
                         </div><!--card end -->
                     </div><!--coll end -->
 
